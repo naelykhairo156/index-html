@@ -1,6 +1,6 @@
 <html>
 <head>
 <body>
-Halo selamat pagi
+Halo
 </body>
 </html>
