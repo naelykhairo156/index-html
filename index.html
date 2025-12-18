@@ -1,6 +1,187 @@
-<html></html>
-<head></head>
-<body></body>
-Halo selamat pagi
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Productivity Hub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1d2671, #c33764);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 2.3em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .card h2 {
+            margin-bottom: 15px;
+            color: #1d2671;
+        }
+
+        input, button {
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+        }
+
+        button {
+            background: #1d2671;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #c33764;
+        }
+
+        .todo-input {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        ul li {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .quote {
+            text-align: center;
+            font-style: italic;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            color: white;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Student Productivity Hub</h1>
+    <p>Kelola waktu, tugas, dan semangat belajarmu</p>
+</header>
+
+<div class="container">
+
+    <!-- Target Belajar -->
+    <div class="card">
+        <h2>🎯 Target Belajar Hari Ini</h2>
+        <div class="todo-input">
+            <input type="text" id="taskInput" placeholder="Contoh: Belajar HTML & CSS">
+            <button onclick="addTask()">Tambah</button>
+        </div>
+        <ul id="taskList"></ul>
+    </div>
+
+    <!-- Jadwal -->
+    <div class="card">
+        <h2>📅 Jadwal Singkat</h2>
+        <p>Pagi : Kuliah / Belajar mandiri</p>
+        <p>Siang : Review materi</p>
+        <p>Malam : Kerjakan tugas & latihan</p>
+    </div>
+
+    <!-- Motivasi -->
+    <div class="card">
+        <h2>💡 Motivasi</h2>
+        <p class="quote" id="quoteText">
+            "Sedikit progres setiap hari lebih baik daripada tidak sama sekali."
+        </p>
+        <br>
+        <button onclick="changeQuote()">Ganti Motivasi</button>
+    </div>
+
+</div>
+
+<footer>
+    © 2025 | Student Productivity Hub - Tugas Pemrograman
+</footer>
+
+<script>
+    function addTask() {
+        const input = document.getElementById("taskInput");
+        const list = document.getElementById("taskList");
+
+        if (input.value === "") {
+            alert("Masukkan target belajar terlebih dahulu!");
+            return;
+        }
+
+        const li = document.createElement("li");
+        li.innerHTML = `
+            ${input.value}
+            <button onclick="this.parentElement.remove()">✔</button>
+        `;
+
+        list.appendChild(li);
+        input.value = "";
+    }
+
+    const quotes = [
+        "Belajar memang melelahkan, tapi menyesal karena malas jauh lebih sakit.",
+        "Proses kecil hari ini menentukan masa depanmu.",
+        "Ngoding hari ini, panik besok kalau nggak.",
+        "Kesalahan adalah bagian dari belajar."
+    ];
+
+    function changeQuote() {
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        document.getElementById("quoteText").innerText = quotes[randomIndex];
+    }
+</script>
+
 </body>
 </html>
